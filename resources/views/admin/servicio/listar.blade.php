@@ -20,7 +20,13 @@
         <td>{{ $serv->tipo }}</td>
         <td>{{ $serv->descripcion }}</td>
         <td>
+            <a href="/admin/servicios/{{ $serv->id }}/editar" class="btn btn-warning btn-xs">editar</a>
 
+            <form action="/admin/servicios/{{ $serv->id }}" method="post">
+                @csrf
+                @Method("DELETE")
+                <input type="submit" value="eliminar" class="btn btn-danger btn-xs">
+            </form>
         </td>
     </tr>
     @endforeach

@@ -36,17 +36,27 @@ class ServicioController extends Controller
 
     public function editar($serv)
     {
+        // buscamos el servicio a editar
+        $servicio = DB::table("servicios")->find($serv);
         // cargar o mostrar el formulario de edicion de un recurso
-        return view("admin.servicio.editar");
+        return view("admin.servicio.editar", compact("servicio"));
     }
 
     public function modificar($id, Request $request)
     {
-        return "MOdificando";
+        $fila = DB::table('servicios')
+            ->where('id', $id)
+            ->update([
+                'nombre' => $request->nombre,
+                'tipo' => $request->tipo,
+                'descripcion' => $request->descripcion
+            ]);
+        return redirect("/admin/servicios");
     }
 
     public function eliminar($id)
     {
-        return "Eliminando";
+        DB::table('servicios')->where('id', '=', $id)->delete();
+        return redirect("/admin/servicios");
     }
 }
