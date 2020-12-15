@@ -1,0 +1,13 @@
+Comandos en Laravel CLI
+1. para levantar el servidor de Proyecto Laravel
+    > php artisan serve
+    > php artisan serve --host=0.0.0.0 --port=9000
+
+2. Generar un Controlador
+    > php artisan make:controller ServicioController
+
+3. Generar un controlador de Recursos
+    > php artisan make:controller CategoriaController -r
+
+4. Verificar las rutas existentes en nuestro proyecto Laravel
+    > php artisan route:list
