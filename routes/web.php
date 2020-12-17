@@ -51,7 +51,7 @@ Route::get("/contacto", function () {
 
 Route::prefix('admin')->group(function () {
 
-    Route::get("/servicios", [ServicioController::class, "listar"])->name("lista_servicios");
+    Route::get("/servicios", [ServicioController::class, "listar"])->name("lista_servicios")->middleware("auth");
     Route::get("/servicios/crear", [ServicioController::class, "crear"]);
     Route::get("/servicios/{servicio}", [ServicioController::class, "mostrar"]);
     Route::get("/servicios/{servicio}/editar", [ServicioController::class, "editar"]);
@@ -61,3 +61,7 @@ Route::prefix('admin')->group(function () {
 
     Route::resource("/categoria", CategoriaController::class);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
